@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+
+        <div th:each="city : ${cities}">
+            <span th:text = "${city.name}"></span>
+            <span th:text = "${city.region}"></span>
+        </div>
+
+</body>
+</html>
