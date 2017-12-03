@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+
+<div th:each="seeker : ${seekers}">
+    <a th:href="@{'/jobseekers/'+${seeker.id}}"><p th:text = "${seeker.firstName} + ${seeker.lastName}" ></p></a>
+    <p th:each="skill : ${seeker.skills}" th:text="${skill.name}"></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="container">
+    <form th:action="@{${action}}" method="post" th:object="${jobpost}">
+        <input type="hidden" th:field="*{id}"/>
+        <div class="row">
+            <div class="col s12">
+                <h2 th:text="${heading}">New Position</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 l8">
+                <select th:field="*{title.id}" >
+                    <option value="">Select a position title</option>
+                    <option th:each="tit : ${titles}" th:value="${tit.id}" th:text="${tit.name}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l8">
+                <select th:field="*{company.id}">
+                    <option value="">Select a company</option>
+                    <option th:each="com : ${companies}" th:value="${com.id}" th:text="${com.name}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 l8">
+                <select th:field="*{type.id}">
+                    <option value="">Select a position type</option>
+                    <option th:each="typ : ${types}" th:value="${typ.id}" th:text="${typ.type}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l8">
+                <select th:field="*{location.id}">
+                    <option value="">Select a city</option>
+                    <option th:each="loc : ${locations}" th:value="${loc.id}" th:text="${loc.city}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="row">
+            <div class="col s12 l8">
+                <button th:text="${submit}" type="submit" class="button">Add</button>
+                <a th:href="@{/positions}" class="button">Cancel</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l8">
+                    <select th:field="*{skills}" multiple="multiple">
+                <option th:each="skill : ${allSkills}" th:value="${skill.id}" th:text="${skill.name}"></option>
+            </select>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script>
+    $(document).ready(function () {
+        $('select').material_select();
+    });
+</script>
+</body>
+</html>

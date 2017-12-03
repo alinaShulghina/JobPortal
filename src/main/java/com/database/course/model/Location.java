@@ -14,20 +14,23 @@ import java.util.List;
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @NotNull
     private String city;
     @NotNull
     private String region;
 
-    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "location")
     private List<JobPost> jobPosts = new ArrayList<>();
 
-    public int getId() {
+    @OneToMany(mappedBy = "location")
+    private List<University> universities = new ArrayList<>();
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -53,5 +56,13 @@ public class Location {
 
     public void setJobPosts(List<JobPost> jobPosts) {
         this.jobPosts = jobPosts;
+    }
+
+    public List<University> getUniversities() {
+        return universities;
+    }
+
+    public void setUniversities(List<University> universities) {
+        this.universities = universities;
     }
 }

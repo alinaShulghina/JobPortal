@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="container">
+    <div class="row">
+        <h1 th:text="${seeker.lastName} + ${seeker.firstName}"></h1>
+    </div>
+    <div class="row">
+        <div class="col s12 18">
+            <h3>Skills</h3>
+            <div>
+                <div th:each="skill : ${seeker.skills}">
+                    <p th:text="${skill.name}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 18">
+            <h3>Education</h3>
+            <div th:each="education: ${seeker.educations}">
+                <p th:text="${education.university.name} +' '+ ${education.specialization}"></p>
+            </div>
+        </div>
+        <div class="col s12 18">
+            <h3>Experience</h3>
+            <div th:each="experience: ${seeker.experiences}">
+                <p th:text="${experience.company.name}"></p>
+                <p th:text="${experience.jobTitle.name}"></p>
+                <p th:text="${experience.description}"></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

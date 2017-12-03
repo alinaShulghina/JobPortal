@@ -38,16 +38,10 @@ public class DataConfig {
     @Bean
     public DataSource dataSource() {
         BasicDataSource ds = new BasicDataSource();
-
-
         ds.setDriverClassName(env.getProperty("jobportal.db.driver"));
-
-
         ds.setUrl(env.getProperty("jobportal.db.url"));
-
         ds.setUsername(env.getProperty("jobportal.db.username"));
         ds.setPassword(env.getProperty("jobportal.db.password"));
-
         return ds;
     }
 }

@@ -22,19 +22,10 @@ public class LocationDaoImpl implements LocationDao {
     @Override
     public List<Location> findAll() {
         Session session = sessionFactory.openSession();
-
         CriteriaBuilder builder = session.getCriteriaBuilder();
-
-
         CriteriaQuery<Location> criteria = builder.createQuery(Location.class);
-
-        // Specify criteria root
         criteria.from(Location.class);
-
-        // Execute query
         List<Location> cities = session.createQuery(criteria).getResultList();
-
-        // Close session
         session.close();
         return cities;
     }

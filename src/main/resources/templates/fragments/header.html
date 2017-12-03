@@ -20,17 +20,18 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Find Job<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a>Upload CV</a></li>
-                    <li><a>Login</a></li>
+                    <li><a th:href="@{/login}">Login</a></li>
                 </ul>
             </div>
         </nav>
         <ul id="dropdown1" class="dropdown-content">
             <li><a th:href="@{/cities}">Search By City</a></li>
-            <li><a>Search By Position</a></li>
+            <li><a th:href="@{/positions}">Search By Position</a></li>
             <li><a th:href="@{/companies}">Search By Company</a></li>
         </ul>
     </div>
 </div>
+
 <script type="text/javascript" th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
 </body>

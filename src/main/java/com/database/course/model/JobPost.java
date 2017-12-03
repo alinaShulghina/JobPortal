@@ -1,9 +1,9 @@
 package com.database.course.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
 
 /**
  * Created by alin- on 01.12.2017.
@@ -13,37 +13,38 @@ import java.util.Date;
 public class JobPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "companyid")
     private Company company;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "jobtitleid")
     private JobTitle title;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "jobtypeid")
     private JobType type;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "locationid")
     private Location location;
 
+    @ManyToMany
+    @JoinTable(name = "jobskills", joinColumns = { @JoinColumn(name = "jobpostid")},
+    inverseJoinColumns = {@JoinColumn(name = "skillid")})
+    private List<Skill> skills = new ArrayList<>();
 
-    private Date postDate;
 
-    private String salary;
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -79,19 +80,11 @@ public class JobPost {
         this.location = location;
     }
 
-    public Date getPostDate() {
-        return postDate;
+    public List<Skill> getSkills() {
+        return skills;
     }
 
-    public void setPostDate(Date postDate) {
-        this.postDate = postDate;
-    }
-
-    public String getSalary() {
-        return salary;
-    }
-
-    public void setSalary(String salary) {
-        this.salary = salary;
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
     }
 }

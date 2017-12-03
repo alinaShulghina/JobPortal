@@ -25,4 +25,24 @@ public class JobPostServiceImpl implements JobpostService{
     public List<JobPost> findByCity(String cityName) {
         return jobpostDao.findByCity(cityName);
     }
+
+    @Override
+    public List<JobPost> findByCompany(String companyName) {
+        return jobpostDao.findByCompany(companyName);
+    }
+
+    @Override
+    public List<JobPost> findByCompanyId(int id) {
+        return jobpostDao.findByCompanyId(id);
+    }
+
+    @Override
+    public JobPost findById(int id) {
+        return jobpostDao.findById(id);
+    }
+
+    @Override
+    public void save(JobPost jobPost) {
+        jobpostDao.save(jobPost);
+    }
 }

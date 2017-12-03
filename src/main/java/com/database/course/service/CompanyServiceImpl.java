@@ -17,4 +17,14 @@ public class CompanyServiceImpl implements CompanyService {
     public Iterable<Company> findAll() {
         return companyDao.findAll();
     }
+
+    @Override
+    public Company findById(int id) {
+        return companyDao.findById(id);
+    }
+
+    @Override
+    public void save(Company company) {
+        companyDao.save(company);
+    }
 }

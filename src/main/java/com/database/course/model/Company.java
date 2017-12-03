@@ -12,7 +12,7 @@ import java.util.List;
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String name;
 
@@ -23,14 +23,17 @@ public class Company {
 
     private byte[] image;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "company")
     List<JobPost> jobPosts = new ArrayList<>();
 
-    public int getId() {
+    @OneToMany(mappedBy = "company")
+    List<HrManager> managers = new ArrayList<>();
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -73,4 +76,13 @@ public class Company {
     public void setJobPosts(List<JobPost> jobPosts) {
         this.jobPosts = jobPosts;
     }
+
+    public List<HrManager> getManagers() {
+        return managers;
+    }
+
+    public void setManagers(List<HrManager> managers) {
+        this.managers = managers;
+    }
+
 }

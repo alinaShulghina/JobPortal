@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${company.name}"></title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+
+    <h1 th:text = "${company.name}"></h1>
+    <p th:text = "${company.description}"></p>
+    <p th:text = "${company.siteUrl}"></p>
+<div class="container">
+    <h3>Available positions</h3>
+    <div class="collection">
+        <a  th:each="position : ${positions}" th:href="@{'/positions/'+${position.id}}" class="collection-item" th:text="${position.title.name}">Alan</a>
+    </div>
+</div>
+</body>
+</html>

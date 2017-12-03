@@ -1,7 +1,5 @@
 package com.database.course.model;
 
-import org.omg.CORBA.portable.IDLEntity;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,19 +12,18 @@ import java.util.List;
 public class JobTitle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String name;
 
-    @OneToMany(mappedBy="title",cascade=CascadeType.ALL,fetch=FetchType.LAZY,
-            orphanRemoval=true)
+    @OneToMany(mappedBy="title")
     private List<JobPost> jobPosts =new ArrayList<>();
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

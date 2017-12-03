@@ -1,7 +1,6 @@
 package com.database.course.dao;
 
-import com.database.course.model.Company;
-import com.database.course.model.Location;
+import com.database.course.model.Skill;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,39 +11,44 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 /**
- * Created by alin- on 01.12.2017.
+ * Created by alin- on 02.12.2017.
  */
 @Repository
-public class CompanyDaoImpl implements CompanyDao {
+public class SkillDaoImpl implements SkillDao {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Company> findAll() {
+    public List<Skill> findAll() {
         Session session = sessionFactory.openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Company> criteria = builder.createQuery(Company.class);
-        criteria.from(Company.class);
-        List<Company> companies = session.createQuery(criteria).getResultList();
+        CriteriaQuery<Skill> criteria = builder.createQuery(Skill.class);
+        criteria.from(Skill.class);
+        List<Skill> skills = session.createQuery(criteria).getResultList();
         session.close();
-        return companies;
+        return skills;
     }
 
     @Override
-    public Company findById(int id) {
+    public Skill findById(int id) {
         Session session = sessionFactory.openSession();
-        Company company = session.get(Company.class,id);
+        Skill skill = session.get(Skill.class,id);
         session.close();
-        return company;
+        return skill;
     }
 
     @Override
-    public void save(Company company) {
+    public void save(Skill skill) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.save(company);
+        session.save(skill);
         session.getTransaction().commit();
         session.close();
+    }
+
+    @Override
+    public void delete(Skill skill) {
+
     }
 }

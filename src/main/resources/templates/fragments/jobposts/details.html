@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+
+<h1 th:text = "${position.title.name}"></h1>
+<p th:text = "${position.company.name}"></p>
+<p th:text = "${position.type.type}"></p>
+<p th:text = "${position.location.city}"></p>
+
+</body>
+</html>

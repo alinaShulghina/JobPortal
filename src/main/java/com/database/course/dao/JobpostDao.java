@@ -10,4 +10,8 @@ import java.util.List;
 public interface JobpostDao {
     List<JobPost> findAll();
     List<JobPost> findByCity(String cityName);
+    List<JobPost> findByCompany(String companyName);
+    List<JobPost> findByCompanyId(int id);
+    JobPost findById(int id);
+    void save(JobPost jobPost);
 }
